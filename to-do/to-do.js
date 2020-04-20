@@ -53,8 +53,21 @@ const update = (description, completed = true) => {
     }
 }
 
+const deleteTask = (description) => {
+    loadDB();
+    let newList = toDoList.filter(task => task.description !== description);
+    if (toDoList.length === newList.length) {
+        return false;
+    } else {
+        toDoList = newList;
+        saveDB();
+        return true
+    }
+}
+
 module.exports = {
     create,
     read,
-    update
+    update,
+    deleteTask
 };

@@ -18,6 +18,13 @@ const argv = require('yargs')
                     description: 'Mark task as completed or pending'
                 }
             })
+            .command('delete', 'delete task to do', {
+                description: {
+                    demand: true,
+                    alias: 'd',
+                    description: 'Task description to do'
+                },
+            })
             .help()
             .argv;
 
