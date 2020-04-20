@@ -1,6 +1,6 @@
 const argv = require('./config/yargs').argv;
 
-console.log(argv);
+let command = argv._[0];
 
 switch (command) {
     case 'create':
