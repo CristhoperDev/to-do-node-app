@@ -1,7 +1,7 @@
 const argv = require('./config/yargs').argv;
 const colors = require('colors');
 
-const {create, getList} = require('./to-do/to-do');
+const {create, read, update} = require('./to-do/to-do');
 
 let command = argv._[0];
 
@@ -13,18 +13,19 @@ switch (command) {
         break;
 
     case 'read':
-        let list = getList();
+        let list = read();
 
         for (let task of list) {
             console.log('=======Task========'.green)
             console.log(`Description: ${task.description}`);
-            console.log(`Status: ${task.completed}`.green);
+            console.log(`Status: ${task.completed}`);
             console.log('==================='.green)
         }
         break;
 
     case 'update':
-        console.log('Update task to do')
+        let completed = update(argv.description, argv.completed);
+        console.log(completed);
         break;
 
     default:
