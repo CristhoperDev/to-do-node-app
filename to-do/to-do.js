@@ -10,7 +10,18 @@ const saveDB = () => {
     });
 };
 
+const loadDB = () => {
+    try {
+        toDoList = require('../db/data.json');
+    } catch (e) {
+        toDoList = [];
+    }
+}
+
 const create = (description) => {
+
+    loadDB();
+
     let toDo = {
         description,
         completed: false
